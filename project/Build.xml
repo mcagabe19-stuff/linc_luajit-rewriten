@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<pragma once="true" />
+
+	<files id="haxe">
+		<compilerflag value="-I${haxelib:linc_luajit}/project/luajit/include" />
+		<compilerflag value="-I${haxelib:linc_luajit}/project/include" />
+	</files>
+
+	<files id="__main__">
+		<compilerflag value="-I${haxelib:linc_luajit}/project/luajit/include" />
+		<compilerflag value="-I${haxelib:linc_luajit}/project/include" />
+	</files>
+
+	<files id="linc_luajit">
+		<compilerflag value="-I${haxelib:linc_luajit}/project/luajit/include" />
+		<compilerflag value="-I${haxelib:linc_luajit}/project/include" />
+
+		<file name="${haxelib:linc_luajit}/project/src/linc_lua.cpp" />
+	</files>
+
+	<target id="haxe">
+		<section if="windows" unless="mingw">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Windows/lua51.lib" if="HXCPP_M64" />
+		</section>
+
+		<section if="mingw">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MinGW/libluajit.a" if="HXCPP_M64" />
+		</section>
+
+		<section if="linux">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit.a" if="HXCPP_M64" />
+		</section>
+
+		<section if="macos">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MacOS/libluajit.a" if="HXCPP_ARM64 || HXCPP_M64" />
+		</section>
+
+		<section if="android">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-v7.a" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-x86.a" if="HXCPP_X86" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-x86_64.a" if="HXCPP_X86_64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-64.a" if="HXCPP_ARM64" />
+		</section>
+
+		<section if="iphoneos || iphonesim">
+			<section if="iphoneos">
+				<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-64.a" if="HXCPP_ARM64" />
+			</section>
+	
+			<section if="iphonesim">
+				<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-x86_64.a" if="HXCPP_M64" />
+			</section>
+		</section>
+
+		<flag value="-fstack-protector" if="mingw" />
+
+		<files id="linc_luajit" />
+	</target>
+</xml>
