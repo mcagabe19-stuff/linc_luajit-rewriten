@@ -29,7 +29,8 @@
 		</section>
 
 		<section if="linux">
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit.a" if="HXCPP_M64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-64.a" if="HXCPP_ARM64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-x86_64.a" if="HXCPP_M64" />
 		</section>
 
 		<section if="macos">
