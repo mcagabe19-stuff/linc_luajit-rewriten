@@ -21,37 +21,46 @@
 
 	<target id="haxe">
 		<section if="windows" unless="mingw">
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Windows/lua51.lib" if="HXCPP_M64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Windows/lua51-armv7.lib" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Windows/lua51-arm64.lib" if="HXCPP_ARM64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Windows/lua51-x86.lib" if="HXCPP_M32" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Windows/lua51-x86_64.lib" if="HXCPP_M64" />
 		</section>
 
 		<section if="mingw">
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MinGW/libluajit.a" if="HXCPP_M64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MinGW/libluajit-armv7.a" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MinGW/libluajit-arm64.a" if="HXCPP_ARM64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MinGW/libluajit-x86.a" if="HXCPP_M32" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MinGW/libluajit-x86_64.a" if="HXCPP_M64" />
 		</section>
 
 		<section if="linux">
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-64.a" if="HXCPP_ARM64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-armv7.a" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-arm64.a" if="HXCPP_ARM64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-x86.a" if="HXCPP_M32" />
 			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Linux/libluajit-x86_64.a" if="HXCPP_M64" />
 		</section>
 
 		<section if="macos">
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MacOS/libluajit.a" if="HXCPP_ARM64 || HXCPP_M64" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MacOS/libluajit-32.a" if="HXCPP_ARMV7 || HXCPP_M32" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/MacOS/libluajit-64.a" if="HXCPP_ARM64 || HXCPP_M64" />
 		</section>
 
 		<section if="android">
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-v7.a" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-armv7.a" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-arm64.a" if="HXCPP_ARM64" />
 			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-x86.a" if="HXCPP_X86" />
 			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-x86_64.a" if="HXCPP_X86_64" />
-			<lib name="${haxelib:linc_luajit}/project/luajit/lib/Android/libluajit-64.a" if="HXCPP_ARM64" />
 		</section>
 
-		<section if="iphoneos || iphonesim">
-			<section if="iphoneos">
-				<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-64.a" if="HXCPP_ARM64" />
-			</section>
+		<section if="iphoneos">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-armv7.a" if="HXCPP_ARMV7" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-arm64.a" if="HXCPP_ARM64" />
+		</section>
 	
-			<section if="iphonesim">
-				<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-x86_64.a" if="HXCPP_M64" />
-			</section>
+		<section if="iphonesim">
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-x86.a" if="HXCPP_M32" />
+			<lib name="${haxelib:linc_luajit}/project/luajit/lib/iPhone/libluajit-x86_64.a" if="HXCPP_M64" />
 		</section>
 
 		<flag value="-fstack-protector" if="mingw" />
