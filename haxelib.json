@@ -1,7 +1,7 @@
 {
   "name": "linc_luajit",
   "url": "https://github.com/mcagabe19/linc_luajit-rewriten",
-  "license": "MIT",
+  "license": "CC BY 4.0",
   "tags": ["lua", "luajit", "linc", "bindings"],
   "description": "Haxe/hxcpp @:native bindings for LuaJIT.",
   "version": "0.1.3",
